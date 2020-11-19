@@ -109,7 +109,6 @@ class FormSubmissionList extends DataObject
                 $formFields = $this->gatherFormFields();
 
                 $mappingField = KeyValueField::create('PropertyMap', 'Map fields from the form to a property', $formFields, $dbFields);
-                // $mappingField->setRightTitle("");
                 $fields->insertAfter('TargetClass', $mappingField);
 
                 $items = DataList::create($this->TargetClass)->filter([
@@ -327,9 +326,6 @@ class FormSubmissionList extends DataObject
             if ($member->inGroups($this->ViewGroups())) {
                 $can = true;
             }
-        }
-        if (!$can) {
-            return $this->canEdit($member);
         }
         return $can;
     }
